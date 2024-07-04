@@ -1,10 +1,11 @@
+import './NavBar.css';
 import { useState, useEffect } from 'react';
 import {Container, Nav, Navbar, NavDropdown} from 'react-bootstrap';
 
-import linkedinLogo from '../assets/imgs/linkedin-light-icon.svg';
-import githubLogo from '../assets/imgs/github-light-icon.svg';
-import discordLogo from '../assets/imgs/discord-light-icon.svg';
-import websiteLogo from '../assets/imgs/profile-picture.jpg';
+import linkedinLogo from '../../assets/icons/linkedin-light-icon.svg';
+import githubLogo from '../../assets/icons/github-light-icon.svg';
+import discordLogo from '../../assets/icons/discord-light-icon.svg';
+import websiteLogo from '../../assets/imgs/profile-picture.jpg';
 
 export const NavBar = () => {
     const [activeLink, setActiveLink] = useState("home");

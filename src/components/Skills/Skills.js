@@ -1,11 +1,13 @@
+import './Skills.css';
 import { Container, Row, Col } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-import javascriptLogo from '../assets/imgs/javascript-logo.svg';
-import reactLogo from '../assets/imgs/react-logo.svg';
-import laravelLogo from '../assets/imgs/laravel-logo.svg';
-import unityLogo from '../assets/imgs/unity-logo.svg';
+import javascriptLogo from '../../assets/icons/javascript-logo.svg';
+import reactLogo from '../../assets/icons/react-logo.svg';
+import laravelLogo from '../../assets/icons/laravel-logo.svg';
+import phpLogo from '../../assets/icons/php-logo.svg';
+import unityLogo from '../../assets/icons/unity-logo.svg';
 
 export const Skills = () => {
     const responsive = {
@@ -16,7 +18,7 @@ export const Skills = () => {
         },
         desktop: {
           breakpoint: { max: 3000, min: 1024 },
-          items: 3
+          items: 4
         },
         tablet: {
           breakpoint: { max: 1024, min: 464 },
@@ -47,11 +49,15 @@ export const Skills = () => {
                                 </div>
                                 <div className="item">
                                     <img src={reactLogo} alt = ""/>
-                                    <h5>React JS</h5>
+                                    <h5>React Framework</h5>
                                 </div>
                                 <div className="item">
                                     <img src={laravelLogo} alt = ""/>
-                                    <h5>Laravel (PHP)</h5>
+                                    <h5>Laravel Framework</h5>
+                                </div>
+                                <div className="item">
+                                    <img src={phpLogo} alt = ""/>
+                                    <h5>PHP</h5>
                                 </div>
                                 <div className="item">
                                     <img src={unityLogo} alt = ""/>
@@ -62,7 +68,7 @@ export const Skills = () => {
                     </Col>
                 </Row>
             </Container>
-            <div className="background-image-left" src=""></div>
+            <div className="background-image-skills" src=""></div>
         </section>
       )
 }
