@@ -1,6 +1,7 @@
 import './NavBar.css';
 import { useState, useEffect } from 'react';
 import {Container, Nav, Navbar, NavDropdown} from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 
 import linkedinLogo from '../../assets/icons/linkedin-light-icon.svg';
 import githubLogo from '../../assets/icons/github-light-icon.svg';
@@ -8,8 +9,8 @@ import discordLogo from '../../assets/icons/discord-light-icon.svg';
 import websiteLogo from '../../assets/imgs/profile-picture.jpg';
 
 export const NavBar = () => {
-    const [activeLink, setActiveLink] = useState("home");
     const [scrolled, setScrolled] = useState(false);
+    const [expanded, setExpanded] = useState(false);
 
     useEffect(() => {
         const onScroll = () => {
@@ -25,35 +26,36 @@ export const NavBar = () => {
         return () => window.removeEventListener("scroll", onScroll)
     }, [])
 
-    const onUpdateActiveLink = (value) => {
-        setActiveLink(value);
-    }
-
     return (
-        <Navbar expand="lg" className={scrolled ? "scrolled" : ""}>
-        <Container>
+        <>
+        <Navbar expand="lg" aria-expanded={`${expanded}`} className={scrolled ? "scrolled" : ""}>
+        <Container >
             <Navbar.Brand href="#home" className='text-white'>
                 <img className='profile-logo' src={websiteLogo} alt = "" />
             </Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" aria-expanded={`${expanded}`} onClick={() => setExpanded(!expanded)}>
+                <span className="navbar-toggler-icon"></span>
+            </Navbar.Toggle>
             <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-                <Nav.Link href="#home" className={activeLink === 'home' ? "active navbar-link" : "navbar-link"} onClick={() => onUpdateActiveLink('home')}>Home</Nav.Link>
-                <Nav.Link href="#skills" className={activeLink === 'skills' ? "active navbar-link" : "navbar-link"} onClick={() => onUpdateActiveLink('skills')}>Skills</Nav.Link>
-                <Nav.Link href="#projects" className={activeLink === 'projects' ? "active navbar-link" : "navbar-link"} onClick={() => onUpdateActiveLink('projects')}>Projects</Nav.Link>
-            </Nav>
-            <div className='navbar-links'>
-                <span className='navbar-text'>
-                    <div className='social-icon'>
-                        <a href='https://www.linkedin.com/in/kirlianpacibe12' target='_blank'><img src={linkedinLogo} alt = "" /></a>
-                        <a href='https://github.com/kyverus' target='_blank'><img src={githubLogo} alt = "" /></a>
-                        <a href='#'><img src={discordLogo} alt = "" /></a>
-                    </div>
-                    <button className='vvd' onClick={() => {console.log("Contact")}}><span>Contact Me!</span></button>
-                </span>
-            </div>
+                <Nav className="me-auto">
+                    <NavLink  to='/' className={({isActive}) => isActive? 'nav-link navbar-link active' : 'nav-link navbar-link'}>Home</NavLink>
+                    <NavLink  to='/about' className={({isActive}) => isActive? 'nav-link navbar-link active' : 'nav-link navbar-link'}>About</NavLink>
+                    <NavLink  to='/projects' className={({isActive}) => isActive? 'nav-link navbar-link active' : 'nav-link navbar-link'}>Projects</NavLink>
+                    <NavLink  to='#' className={({isActive}) => isActive? 'nav-link navbar-link active' : 'nav-link navbar-link'}>Contacts</NavLink>
+                </Nav>
+                <div className='navbar-links'>
+                    <span className='navbar-text'>
+                        <div className='social-icon'>
+                            <a href='https://www.linkedin.com/in/kirlianpacibe12' target='_blank'><img src={linkedinLogo} alt = "" /></a>
+                            <a href='https://github.com/kyverus' target='_blank'><img src={githubLogo} alt = "" /></a>
+                            <a href='#'><img src={discordLogo} alt = "" /></a>
+                        </div>
+                        <button className='vvd' onClick={() => {console.log("Contact")}}><span>Contact Me!</span></button>
+                    </span>
+                </div>
             </Navbar.Collapse>
         </Container>
         </Navbar>
+        </>
   );
 }
