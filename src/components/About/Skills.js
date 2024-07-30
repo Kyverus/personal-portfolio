@@ -1,4 +1,4 @@
-import './Skills.css';
+import './About.css';
 import { Container, Row, Col } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
