@@ -7,6 +7,7 @@ import { AboutPage } from './pages/AboutPage';
 import {ProjectsListPage} from './pages/ProjectListPage';
 import {ProjectPage} from './pages/ProjectPage';
 import {NotFoundPage} from './pages/NotFoundPage';
+import ScrollToTop from './components/ScrollToTop';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -24,6 +25,7 @@ function App() {
               <Route path="*" element={<NotFoundPage />}/>
             </Routes>
           </div> 
+          <ScrollToTop />
       </div>  
     </BrowserRouter>
 
